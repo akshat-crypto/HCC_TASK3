@@ -1,0 +1,23 @@
+INSTALL ALL THE NECESSARY PROGRAMS
+apt-get update
+apt-get upgrade -y
+apt-get install mysql-server mysql-client -y
+mysql_secure_installation
+	Enable Validate Password Plugin? No
+	Change the password for root? No
+	Remove anonymous users? Yes
+	Disallow root login remotely? Yes
+	Remove test database and access to it? Yes
+	Reload privilege table now? Yes
+vi /etc/mysql/mysql.conf.d/mysqld.cnf
+bind-address=your-dbserver-privateip
+ service mysql restart
+
+CREATING TABLE
+mysql -uroot -p;
+CREATE DATABASE wordpress-db;
+CREATE USER ‘User‘@’wpserver-private-ip‘ IDENTIFIED BY ‘kjl134‘;
+GRANT ALL PRIVILEGES ON wordpress.* TO ‘User‘@’wpserver-private-ip‘;
+FLUSH PRIVILEGES;
+
+

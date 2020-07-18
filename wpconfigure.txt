@@ -1,0 +1,18 @@
+TO INSTALL ALL THE NECESSARY PROGRAMS
+apt-get update
+ apt-get upgrade -y
+apt-get install apache2 -y
+apt-get install php7.0 php7.0-curl php7.0-mysql php7.0-mbstring php7.0-dom php7.0-gd -y
+apt-get install libapache2-mod-php7.0
+apt-get install mysql-client -y
+
+DOWNLOAD THE WORDPRESS FILES AND COPY IT
+ cd /var/www/html
+ rm -rf *
+mv wordpres/* /var/www/html
+wget https://wordpress.org/latest.tar.gz
+tar -xzvf latest.tar.gz
+chown -R www-data:www-data /var/www/html
+
+AFTER CONFIGURING DBSERVER CHECK THE CONNECTIVITY OF DATABASE
+mysql -uwordpressUser -p -hdbserver-private-ip
